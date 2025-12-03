@@ -6,10 +6,7 @@
 	<artifactId>zephyr</artifactId>
 	<version>1.0.0</version>
 	<packaging>pom</packaging>
-	<modules>
-		<module>zephyr-parent</module>
-		<module>zephyr-cloud-dependencies</module>
-	</modules>
+
 
 	<properties>
 		<maven.compiler.source>17</maven.compiler.source>
