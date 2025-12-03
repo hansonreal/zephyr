@@ -2,21 +2,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-		 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<groupId>com.github</groupId>
-		<artifactId>zephyr-parent</artifactId>
-		<version>1.0.0</version>
+		<artifactId>zephyr</artifactId>
+		<version>${revision}</version>
 	</parent>
 
-	<artifactId>zephyr-cloud-dependencies</artifactId>
+	<artifactId>zephyr-dependencies</artifactId>
 	<packaging>pom</packaging>
 
-	<!-- 这里只做依赖声明，版本从parent继承 -->
 	<dependencyManagement>
 		<dependencies>
-			<!-- spring boot 依赖 -->
+			<!-- Spring Boot BOM -->
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-dependencies</artifactId>
@@ -24,7 +24,8 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-			<!-- spring cloud 依赖 -->
+
+			<!-- Spring Cloud BOM -->
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
@@ -32,7 +33,8 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-			<!-- spring cloud alibaba 依赖 -->
+
+			<!-- Spring Cloud Alibaba BOM -->
 			<dependency>
 				<groupId>com.alibaba.cloud</groupId>
 				<artifactId>spring-cloud-alibaba-dependencies</artifactId>
@@ -40,7 +42,23 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+
+			<!-- 第三方依赖版本管理 -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-bom</artifactId>
+				<version>${mybatis-plus.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- 更多第三方依赖... -->
 		</dependencies>
 	</dependencyManagement>
-
 </project>
