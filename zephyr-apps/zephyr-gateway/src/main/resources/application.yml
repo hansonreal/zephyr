@@ -1,0 +1,7 @@
+server:
+  port: 9527
+  servlet:
+    context-path: /zephyr
+logging:
+  level:
+    root: info

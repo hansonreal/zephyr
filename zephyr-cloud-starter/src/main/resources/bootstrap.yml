@@ -1,0 +1,27 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: zephyr-gateway
+  profiles:
+    active: @profile.name@
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false # 关闭默认服务发现路由
+    nacos:
+      username: @nacos.username@
+      password: @nacos.password@
+      discovery:
+        enabled: true
+        server-addr: @discovery.server-addr@
+        namespace: @discovery.namespace@  # 可选，命名空间 ID
+        group: @discovery.group@  # 可选，配置分组
+      config:
+        enabled: true
+        namespace: @config.namespace@  # 可选，命名空间 ID
+        server-addr: @config.server-addr@ # Nacos 地址
+        group: @config.group@  # 可选，配置分组
+        refresh-enabled: true # 是否开启 Nacos 配置刷新
+        file-extension: yaml
