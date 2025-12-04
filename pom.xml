@@ -231,20 +231,38 @@
 		</plugins>
 	</build>
 
+
 	<!-- Profiles -->
 	<profiles>
 		<profile>
-			<id>cloud</id>
-			<properties>
-				<profiles.active>dev</profiles.active>
-				<nacos.username>nacos</nacos.username>
-				<nacos.password>nacos</nacos.password>
-			</properties>
+			<id>DEV</id>
 			<activation>
+				<!--默认激活配置-->
 				<activeByDefault>true</activeByDefault>
 			</activation>
+			<properties>
+				<!--当前环境-->
+				<profile.name>dev</profile.name>
+				<nacos.username>nacos</nacos.username>
+				<nacos.password>nacos</nacos.password>
+				<!--nacos服务注册与发现中心配置信息-->
+				<!--nacos服务注册与发现中心地址-->
+				<discovery.server-addr>127.0.0.1:8848</discovery.server-addr>
+				<!--nacos服务注册与发现中心命名空间,用于支持多环境.这里必须使用ID，不能使用名称,默认为空-->
+				<discovery.namespace></discovery.namespace>
+				<!--nacos服务注册与发现中心分组名称-->
+				<discovery.group>DEFAULT_GROUP</discovery.group>
+				<!--配置中心配置信息-->
+				<!--nacos配置中心地址-->
+				<config.server-addr>127.0.0.1:8848</config.server-addr>
+				<!--nacos配置中心命名空间,用于支持多环境.这里必须使用ID，不能使用名称,默认为空-->
+				<config.namespace></config.namespace>
+				<!--nacos配置中心分组名称-->
+				<config.group>DEFAULT_GROUP</config.group>
+				<!--nacos配置中心的配置文件前缀
+				<config.prefix.name>ubp-server</config.prefix.name>-->
+			</properties>
 		</profile>
-
 		<!-- 自动激活，针对 lombok 注解增强-->
 		<profile>
 			<id>jdk25-annotation-processor</id>
