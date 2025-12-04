@@ -5,7 +5,7 @@
          http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.github</groupId>
+	<groupId>com.zephyr</groupId>
 	<artifactId>zephyr</artifactId>
 	<version>${revision}</version>
 	<packaging>pom</packaging>
@@ -13,6 +13,7 @@
 	<modules>
 		<module>zephyr-apps</module>
 		<module>zephyr-cloud-starter</module>
+		<module>zephyr-components</module>
 	</modules>
 
 
@@ -34,7 +35,7 @@
 		<spring-cloud-alibaba.version>2021.0.4.0</spring-cloud-alibaba.version>
 		<spring-boot-admin.version>3.4.5</spring-boot-admin.version>
 
-		<!-- 数据库 -->
+		<!-- 数据�? -->
 		<mysql.version>8.0.33</mysql.version>
 		<mybatis-plus.version>3.5.14</mybatis-plus.version>
 
@@ -93,7 +94,7 @@
 				<scope>import</scope>
 			</dependency>
 
-			<!-- 第三方依赖版本管理 -->
+			<!-- 第三方依赖版本管�? -->
 			<dependency>
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
@@ -108,7 +109,7 @@
 				<scope>import</scope>
 			</dependency>
 
-			<!-- 更多第三方依赖... -->
+			<!-- 更多第三方依�?... -->
 		</dependencies>
 	</dependencyManagement>
 
@@ -179,7 +180,7 @@
 				</executions>
 			</plugin>
 
-			<!-- 2. 编译器插件 -->
+			<!-- 2. 编译器插�? -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -228,6 +229,34 @@
 				</executions>
 			</plugin>
 
+			<plugin>
+				<groupId>com.google.code.maven-replacer-plugin</groupId>
+				<artifactId>maven-replacer-plugin</artifactId>
+				<version>1.4.1</version>
+				<executions>
+					<execution>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>replace</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<includes>
+						<include>**/*.java</include>
+						<include>**/*.xml</include>
+						<include>**/*.yml</include>
+						<include>**/*.yaml</include>
+					</includes>
+					<replacements>
+						<replacement>
+							<token>zephyr</token>
+							<value>zephyr</value>
+						</replacement>
+					</replacements>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 
@@ -237,7 +266,7 @@
 		<profile>
 			<id>DEV</id>
 			<activation>
-				<!--默认激活配置-->
+				<!--默认�?活配�?-->
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
@@ -245,25 +274,25 @@
 				<profile.name>dev</profile.name>
 				<nacos.username>nacos</nacos.username>
 				<nacos.password>nacos</nacos.password>
-				<!--nacos服务注册与发现中心配置信息-->
-				<!--nacos服务注册与发现中心地址-->
+				<!--nacos服务注册与发现中心配置信�?-->
+				<!--nacos服务注册与发现中心地�?-->
 				<discovery.server-addr>127.0.0.1:8848</discovery.server-addr>
-				<!--nacos服务注册与发现中心命名空间,用于支持多环境.这里必须使用ID，不能使用名称,默认为空-->
+				<!--nacos服务注册与发现中心命名空�?,用于支持多环�?.这里必须使用ID，不能使用名�?,默认为空-->
 				<discovery.namespace></discovery.namespace>
-				<!--nacos服务注册与发现中心分组名称-->
+				<!--nacos服务注册与发现中心分组名�?-->
 				<discovery.group>DEFAULT_GROUP</discovery.group>
 				<!--配置中心配置信息-->
 				<!--nacos配置中心地址-->
 				<config.server-addr>127.0.0.1:8848</config.server-addr>
-				<!--nacos配置中心命名空间,用于支持多环境.这里必须使用ID，不能使用名称,默认为空-->
+				<!--nacos配置中心命名空间,用于支持多环�?.这里必须使用ID，不能使用名�?,默认为空-->
 				<config.namespace></config.namespace>
 				<!--nacos配置中心分组名称-->
 				<config.group>DEFAULT_GROUP</config.group>
-				<!--nacos配置中心的配置文件前缀
+				<!--nacos配置中心的配置文件前�?
 				<config.prefix.name>ubp-server</config.prefix.name>-->
 			</properties>
 		</profile>
-		<!-- 自动激活，针对 lombok 注解增强-->
+		<!-- 自动�?活，针对 lombok 注解增强-->
 		<profile>
 			<id>jdk25-annotation-processor</id>
 			<activation>
